@@ -7,3 +7,4 @@
 - Easy 06: [link](enunciados/easy06)
   
 ## Listado de pruebas completadas:  
+  
