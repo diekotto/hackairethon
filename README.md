@@ -22,9 +22,9 @@ Dependencias generales `npm i -g <pkg>`
 - npm test:
   - Sin implementar
 - npm start
-  - Pasa los test. (Sin implementar)
   - Pasa tslint.
   - Pasa transpilador
+  - Pasa los test. (Sin implementar)
   
 ### Configuración y dependencias del Servidor
 Linux Debian  
