@@ -2,11 +2,29 @@
 ### Version 0.0.0
 ## Aplicación web para aprendizaje, entrenamiento y mentorización.
 
+### Información general configuración IDE
+- Tabulación con espacios: 2 espacios por tab
+
 ### Frontend:
 Angular  
   
 ### Backend:
-Node w/ Express API REST  
+Node w/ Express API REST en Typescript  
+Dependencias generales `npm i -g <pkg>`
+- typescript
+- tslint
+
+### Información general testing y compilación del backend
+- npm run tslint:
+  - Pasa un revisor léxico con ciertas normas.
+- npm run compile:
+  - Pasa el transpilador de Typescript a Js.
+- npm test:
+  - Sin implementar
+- npm start
+  - Pasa los test. (Sin implementar)
+  - Pasa tslint.
+  - Pasa transpilador
   
 ### Configuración y dependencias del Servidor
 Linux Debian  
