@@ -3,7 +3,7 @@
 ## Aplicación web para aprendizaje, entrenamiento y mentorización.
 
 ### Información general configuración IDE
-- Tabulación con espacios: 2 espacios por tab
+- Indentación con espacios: 2 espacios de indentación.
 
 ### Frontend:
 Angular  
