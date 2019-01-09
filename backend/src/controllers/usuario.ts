@@ -14,9 +14,21 @@ class Usuario extends SuperController {
         Usuario.singleton = this;
     }
 
+    public linkRoutes(): void {
+        super.linkRoutes();
+        this.login();
+    }
+
     public get(): void {
         this._app.get(this._path, (_req: express.Request, res: express.Response) => {
             res.send({msg: 'Listado de usuarios.'});
+        });
+    }
+
+    public login(): void {
+        // LINKADO DEL ENRUTADO A LA FUNCIONALIDAD DE LOGIN
+        this._app.post(`${this._path}/login`, (_req, _resp) => {
+            // hola
         });
     }
 }
