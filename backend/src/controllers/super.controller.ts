@@ -35,35 +35,35 @@ class SuperController {
 
     public get(): void {
         this._app.get(this._path, (_req: express.Request, res: express.Response) => {
-            res.status(500);
+            res.status(501);
             res.end();
         });
     }
 
     public post(): void {
         this._app.post(this._path, (_req: express.Request, res: express.Response) => {
-            res.status(500);
+            res.status(501);
             res.end();
         });
     }
 
     public put(): void {
         this._app.put(this._path, (_req: express.Request, res: express.Response) => {
-            res.status(500);
+            res.status(501);
             res.end();
         });
     }
 
     public patch(): void {
         this._app.patch(this._path, (_req: express.Request, res: express.Response) => {
-            res.status(500);
+            res.status(501);
             res.end();
         });
     }
 
     public delete(): void {
         this._app.delete(this._path, (_req: express.Request, res: express.Response) => {
-            res.status(500);
+            res.status(501);
             res.end();
         });
     }

@@ -27,8 +27,9 @@ class Usuario extends SuperController {
 
     public login(): void {
         // LINKADO DEL ENRUTADO A LA FUNCIONALIDAD DE LOGIN
-        this._app.post(`${this._path}/login`, (_req, _resp) => {
-            // hola
+        this._app.post(`${this._path}/login`, (_req: express.Request, res: express.Response) => {
+            res.status(501);
+            res.end();
         });
     }
 }
