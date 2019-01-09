@@ -3,7 +3,9 @@
 ## Aplicación web para aprendizaje, entrenamiento y mentorización.
 
 ### Información general configuración IDE
-- Indentación con espacios: 2 espacios de indentación.
+- Indentación con espacios: 4 espacios de indentación.
+- Linea en blanco al final del fichero.
+- Punto y coma obligatorio.
 
 ### Frontend:
 Angular  
