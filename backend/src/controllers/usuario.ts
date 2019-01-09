@@ -39,28 +39,28 @@ class Usuario {
         });
     }
 
-    public post() {
+    public post(): void {
         this._app.post(this._path, (_req: express.Request, res: express.Response) => {
             res.status(500);
             res.end();
         });
     }
 
-    public put() {
+    public put(): void {
         this._app.put(this._path, (_req: express.Request, res: express.Response) => {
             res.status(500);
             res.end();
         });
     }
 
-    public patch() {
+    public patch(): void {
         this._app.patch(this._path, (_req: express.Request, res: express.Response) => {
             res.status(500);
             res.end();
         });
     }
 
-    public delete() {
+    public delete(): void {
         this._app.delete(this._path, (_req: express.Request, res: express.Response) => {
             res.status(500);
             res.end();
