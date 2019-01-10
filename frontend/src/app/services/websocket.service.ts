@@ -8,7 +8,7 @@ import {User} from "../models/User";
 export class WebsocketService {
 
     private websocket: WebSocket;
-    public rawMessage: EventEmitter = new EventEmitter();
+    public rawMessage: EventEmitter<string> = new EventEmitter<string>();
 
     constructor() {
         this.initWebsocket();
