@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {User} from "../models/User";
 
@@ -8,12 +8,11 @@ import {User} from "../models/User";
 export class WebsocketService {
 
     private websocket: WebSocket;
-
+    public rawMessage: EventEmitter = new EventEmitter();
 
     constructor() {
         this.initWebsocket();
     }
-
 
     initWebsocket() {
         this.websocket = new WebSocket(environment.wsUrl);
@@ -23,29 +22,31 @@ export class WebsocketService {
         this.websocket.onerror = (e) => {this.onErrorWS(e);};
     }
 
-    onOpenWS(e) {
-        console.log("opened ", e);
-    }
-
-    onCloseWS(e){
-        console.log("closed " , e);
-    }
-
     onMessageWS(e) {
-        console.log("message " , e);
+        this.rawMessage.emit(e.data);
     }
 
-    onErrorWS(e) {
-        console.log("error " , e);
-    }
+
 
     sendMessage(message:string, user:User) {
-
         //todo definir estructura json esperado por backend
         this.websocket.send(JSON.stringify({
             username: user.username,
             message: message
         }));
+    }
+
+    //todo implementar control de estas llamadas
+    onOpenWS(e) {
+        console.log("opened ", e);
+    }
+
+    onCloseWS(e) {
+        console.log("closed " , e);
+    }
+
+    onErrorWS(e) {
+        console.log("error " , e);
     }
 
 }

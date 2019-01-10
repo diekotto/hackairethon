@@ -1,1 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+#chatArea {
+    height:90vh;
+    overflow: scroll;
+}

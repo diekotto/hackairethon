@@ -1,1 +1,8 @@
-<input #msg type="text" placeholder="Esperando msg..." (keyup.enter)="sendMessage(msg.value)"/>
+<mat-card [innerHTML]="text" id="chatArea">
+
+</mat-card>
+<mat-form-field>
+    <input #msg matInput placeholder="Escribir..." [(ngModel)]="message"  (keyup.enter)="sendMessage()" >
+
+</mat-form-field>
+<button mat-button color="primary">Enviar</button>

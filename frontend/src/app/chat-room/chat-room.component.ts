@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WebsocketService} from "../services/websocket.service";
 import {User} from "../models/User";
+import {stringify} from "querystring";
 
 @Component({
     selector: 'app-chat-room',
@@ -8,25 +9,35 @@ import {User} from "../models/User";
     styleUrls: ['./chat-room.component.css']
 })
 export class ChatRoomComponent implements OnInit {
-
+    public message = "";
+    private user: User;
+    public text = "";
 
     constructor(
         private wsService : WebsocketService
     ) {
+        this.user = new User("" + (Math.floor(Math.random() * 100)));
 
+        this.wsService.rawMessage.subscribe((data) => this.printMessage(data));
     }
 
     ngOnInit() {
-        setTimeout(() => {
+    }
 
-            this.wsService.sendMessage("test", new User("xd"))
-        }, 1000);
+    printMessage(rawMessage :string) {
+        let json = JSON.parse(rawMessage);
+
+        this.text += "<strong>" + json.username + ": </strong> " + json.message + "<br>";
+
+        var chat = document.getElementById("chatArea");
+        chat.scrollTop = chat.scrollHeight;
 
     }
 
-    sendMessage(msg :string) {
-        if(msg != "") {
-            this.wsService.sendMessage(msg, new User("vicent"));
+    sendMessage() {
+        if(this.message != "") {
+            this.wsService.sendMessage(this.message, this.user);
+            this.message = "";
         }
     }
 
