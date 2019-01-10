@@ -12,10 +12,6 @@ Angular
   
 ### Backend:
 Node w/ Express API REST en Typescript  
-Dependencias generales `npm i -g <pkg>`
-- typescript
-- tslint
-- jasmine
 
 ### Información general testing y compilación del backend
 - npm run tslint:
