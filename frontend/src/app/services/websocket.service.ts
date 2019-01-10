@@ -6,6 +6,7 @@ import {User} from "../models/User";
     providedIn: 'root'
 })
 export class WebsocketService {
+
     private websocket: WebSocket;
 
 
@@ -28,20 +29,18 @@ export class WebsocketService {
 
     onCloseWS(e){
         console.log("closed " , e);
-
     }
 
     onMessageWS(e) {
         console.log("message " , e);
-
     }
 
     onErrorWS(e) {
         console.log("error " , e);
-
     }
 
     sendMessage(message:string, user:User) {
+
         //todo definir estructura json esperado por backend
         this.websocket.send(JSON.stringify({
             username: user.username,
@@ -49,7 +48,4 @@ export class WebsocketService {
         }));
     }
 
-    websocket() {
-        return this.websocket;
-    }
 }

@@ -24,5 +24,11 @@ export class ChatRoomComponent implements OnInit {
 
     }
 
+    sendMessage(msg :string) {
+        if(msg != "") {
+            this.wsService.sendMessage(msg, new User("vicent"));
+        }
+    }
+
 
 }
