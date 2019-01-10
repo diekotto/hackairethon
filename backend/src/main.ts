@@ -18,14 +18,11 @@ app.disable('x-powered-by');
 import {Usuario} from './controllers/usuario';
 
 const usuarioController = new Usuario(app, '/usuario');
-usuarioController.get();
-usuarioController.post();
-usuarioController.put();
-usuarioController.patch();
-usuarioController.delete();
+usuarioController.linkRoutes();
+
 app.get('/', (_req, res) => {
     res.status(200);
-    res.end();
+    res.end({msg: 'Página principal del servidor.'});
 });
 app.listen(httpsPort, () => {
     console.log(`Escuchando en el puerto ${httpsPort}`);
