@@ -22,7 +22,7 @@ usuarioController.linkRoutes();
 
 app.get('/', (_req, res) => {
     res.status(200);
-    res.end({msg: 'Página principal del servidor.'});
+    res.send({msg: 'Página principal del servidor.'});
 });
 app.listen(httpsPort, () => {
     console.log(`Escuchando en el puerto ${httpsPort}`);
