@@ -1,6 +1,13 @@
 import express from 'express';
 import bodyparser from 'body-parser';
 import cors from 'cors';
+import {router} from './router-decorators';
+
+/**
+ * Carga de controladores, no hay que crear instancias
+ */
+import './controllers/usuario.controller';
+
 // Se usará https cuando estén configuradas las firmas
 // import https from 'https';
 /**
@@ -10,20 +17,13 @@ const httpsPort = 8081;
 const app: express.Application = express();
 app.use(bodyparser.json());
 app.use(cors());
+app.use(router);
 app.disable('x-powered-by');
 
 /**
  * Inyección de la aplicación a las clases manejadoras
  */
-import {Usuario} from './controllers/usuario';
 
-const usuarioController = new Usuario(app, '/usuario');
-usuarioController.linkRoutes();
-
-app.get('/', (_req, res) => {
-    res.status(200);
-    res.send({msg: 'Página principal del servidor.'});
-});
 app.listen(httpsPort, () => {
     console.log(`Escuchando en el puerto ${httpsPort}`);
 });
