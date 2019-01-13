@@ -9,7 +9,7 @@ class UsuarioController extends SuperController {
         res.send({msg: 'Listado de usuarios.'});
     }
 
-    @Route('get', '/login')
+    @Route('post', '/login')
     public login(_req: express.Request, res: express.Response): void {
         res.status(501).end();
     }
