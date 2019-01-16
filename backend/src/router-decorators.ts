@@ -5,7 +5,12 @@ const validMethods = ['get', 'post', 'put', 'patch', 'delete'];
 const routes: any = {};
 
 class RouteData {
-    constructor(public method: string, public path: string, public callable: string) {}
+    constructor(
+        public method: string,
+        public path: string,
+        public callable: string,
+        public middleware: any[] = [],
+    ) {}
 }
 
 /**
@@ -33,11 +38,16 @@ export function Controller(basePath: string = '', resource: boolean = false, res
         if (routes[controllerName]) {
             for (const route of routes[controllerName]) {
                 const fullPath = basePath + route.path;
-                router[route.method](basePath + route.path, controller[route.callable]);
-                console.log(`Registered ${route.method} route ${fullPath} from ${controller.constructor.name}`);
+                if (route.middleware && route.middleware.length > 0) {
+                    router[route.method](fullPath, ...route.middleware, controller[route.callable]);
+                    console.log(`[${controllerName}] Registered ${route.method} route ${fullPath} with middleware`);
+                } else {
+                    router[route.method](fullPath, controller[route.callable]);
+                    console.log(`[${controllerName}] Registered ${route.method} route ${fullPath}`);
+                }
             }
         } else {
-            console.log(`No routes found from ${controllerName}`);
+            console.log(`No routes found for ${controllerName}`);
         }
     };
 }
@@ -46,9 +56,10 @@ export function Controller(basePath: string = '', resource: boolean = false, res
  * Sets the method as a route
  * @param method A valid http verb
  * @param path The path of the route starting from the controller's base path
+ * @param middleware An optional array of middleware functions
  * @constructor
  */
-export function Route(method: string, path: string): any {
+export function Route(method: string, path: string, middleware: any = null): any {
     return (target: any, callable: string) => {
         method = method.toLowerCase();
         if (validMethods.includes(method)) {
@@ -56,7 +67,7 @@ export function Route(method: string, path: string): any {
             if (!routes[controllerName]) {
                 routes[controllerName] = [];
             }
-            routes[controllerName].push(new RouteData(method, path, callable));
+            routes[controllerName].push(new RouteData(method, path, callable, middleware));
         }
     };
 }
