@@ -59,7 +59,7 @@ export function Controller(basePath: string = '', resource: boolean = false, res
  * @param middleware An optional array of middleware functions
  * @constructor
  */
-export function Route(method: string, path: string, middleware: any = null): any {
+export function Route(method: string, path: string, middleware: any = undefined): any {
     return (target: any, callable: string) => {
         method = method.toLowerCase();
         if (validMethods.includes(method)) {
